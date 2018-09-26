@@ -1,0 +1,32 @@
+{
+  "name": "senti-service-dispatch",
+  "version": "1.0.0",
+  "description": "Simple REST API for dispatching service MQTT mesages to devices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senti-platform/senti-service-dispatch.git"
+  },
+  "keywords": [
+    "mqtt",
+    "iot",
+    "smartcity",
+    "senti",
+    "senti.cloud",
+    "rest",
+    "api",
+    "nodejs"
+  ],
+  "author": "Christian Broberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/senti-platform/senti-service-dispatch/issues"
+  },
+  "homepage": "https://github.com/senti-platform/senti-service-dispatch#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
