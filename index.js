@@ -9,7 +9,8 @@ app.get("/dispatch", (req, res, next) => {
 	console.log("Now dispatching service messages")
 })
 
-app.listen(3000, () => {
-	console.log("Server running on port 3000"), 'localhost'
-})
+const port = 3001
 
+app.listen(port, () => {
+	console.log("Server running on port: ", port), 'localhost'
+})
