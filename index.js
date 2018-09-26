@@ -3,14 +3,13 @@ var express = require("express")
 
 var app = express()
 
-app.get("/dispatch", (req, res, next) => {
-	// res.json(["Christian", "Mikkel", "Andrei", "Martin", "Henrik"])
+app.get("/", (req, res, next) => {	
 	res.json("Now dispatching service messages")
 	console.log("Now dispatching service messages")
 })
 
-const port = 3000
+var port = process.env.PORT || 80
 
 app.listen(port, () => {
-	console.log("Server running on port: ", port), 'localhost'
+	console.log("Server running on port: ", port)
 })
