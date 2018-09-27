@@ -5,7 +5,7 @@ var port = process.env.PORT || 3000
 
 var app = express()
 
-app.get("/", (req, res, next) => {	
+app.get("/dispatch", (req, res, next) => {	
 	res.json("Now dispatching service messages")
 	console.log("Now dispatching service messages")
 })
