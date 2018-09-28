@@ -9,6 +9,7 @@ app.get("/dispatch", (req, res, next) => {
 	res.json("Now dispatching service messages")
 	console.log("Now dispatching service messages")
 })
+
 app.post("/dispatch", (req, res, next) => {	
 	res.json("Now dispatching service messages")
 	console.log("Now dispatching service messages")
