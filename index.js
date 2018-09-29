@@ -11,7 +11,8 @@ app.get("/dispatch", (req, res, next) => {
 })
 
 app.post("/dispatch", (req, res, next) => {	
-	res.json("Now dispatching service messages")
+	// res.json("Now dispatching service messages")
+	res.send('OK')
 	console.log("Now dispatching service messages")
 })
 
