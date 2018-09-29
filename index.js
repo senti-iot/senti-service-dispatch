@@ -12,8 +12,11 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.get("/dispatch", (req, res, next) => {	
-	res.json("Now dispatching service messages")
-	console.log("Now dispatching service messages")
+    // res.json("Now dispatching service messages")
+    res.send('OK')
+    const theData = req.body;
+    console.log("Now dispatching service messages")
+    console.log(theData)
 })
 
 app.post("/dispatch", (req, res, next) => {	
