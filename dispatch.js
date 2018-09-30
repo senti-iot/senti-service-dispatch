@@ -20,16 +20,12 @@ function dispatch() {
 				console.log('Dispatching from ', _clientId)
 			} else console.log('Error')
 		})
+	}
+	)
+	client.on("error", function (error) {
+		console.log("ERROR: ", error, dateTimeLog())
+		log()
 	})
-
-
-
-/* 	client.on('connect', function() {
-		client.publish('sensor/update', 'now')
-		console.log('Dispatching from ', _clientId)
-	})
-	// client.end() */
-	
 }
 
 
