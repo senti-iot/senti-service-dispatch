@@ -10,7 +10,6 @@ var client = mqtt.connect('mqtt://hive.senti.cloud', {
 function dispatch() {
 	client.publish('sensor/update', 'now' + _clientId)
 	console.log('Dispatching from ', _clientId)
-	client.end()
 }
 
 
