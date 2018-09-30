@@ -1,4 +1,6 @@
 #!/usr/bin/env nodejs
+const dispatch = require("./dispatch").dispatch
+
 var express = require("express")
 const bodyParser = require('body-parser')
 
@@ -16,7 +18,8 @@ app.get("/dispatch", (req, res, next) => {
     res.send('OK')
     const theData = req.body;
     console.log("Now dispatching service messages")
-    console.log(theData)
+	console.log(theData)
+	dispatch()
 })
 
 app.post("/dispatch", (req, res) => {	
@@ -24,7 +27,8 @@ app.post("/dispatch", (req, res) => {
     res.send('OK')
     const theData = req.body;
 	console.log("Now dispatching service messages")
-    console.log(theData)
+	console.log(theData)
+	dispatch()
 })
 
 app.listen(port, () => {

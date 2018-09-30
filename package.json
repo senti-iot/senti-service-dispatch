@@ -29,6 +29,7 @@
   "homepage": "https://github.com/senti-platform/senti-service-dispatch#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mqtt": "^2.18.8"
   }
 }
