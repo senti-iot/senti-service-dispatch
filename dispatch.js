@@ -19,10 +19,9 @@ function dispatch() {
 			if (!err) {
 				client.publish('sensor/update', 'now')
 				console.log('Dispatching from ', _clientId)
-			}
+			} else console.log('Error')
 		})
 	})
-
 
 
 
