@@ -3,9 +3,7 @@ var mqtt = require('mqtt')
 var _clientId = 'senti-dispatcher'
 
 
-var client = mqtt.connect('mqtt://hive.senti.cloud', {
-	clientId: _clientId
-})
+var client = mqtt.connect('mqtt://hive.senti.cloud')
 
 /* function dispatch() {
 	client.publish('sensor/update', 'now' + _clientId)
