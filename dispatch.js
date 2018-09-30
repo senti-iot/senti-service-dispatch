@@ -14,6 +14,7 @@ var client = mqtt.connect('mqtt://hive.senti.cloud', {
  */
 
 function dispatch() {
+	console.log('Dispatching from ', _clientId)
 	client.on('connect', function () {
 		client.subscribe('sensor/update', function (err) {
 			if (!err) {
