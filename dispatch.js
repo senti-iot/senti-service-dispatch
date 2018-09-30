@@ -24,15 +24,15 @@ function dispatch() {
 	})
 
 
-/* 
 
-	client.on('connect', function() {
+
+/* 	client.on('connect', function() {
 		client.publish('sensor/update', 'now')
 		console.log('Dispatching from ', _clientId)
 	})
-	// client.end()
+	// client.end() */
 	
-} */
+}
 
 
 module.exports = {
