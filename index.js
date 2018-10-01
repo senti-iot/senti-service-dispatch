@@ -14,37 +14,21 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.get("/dispatch", (req, res, next) => {	
-    // res.json("Now dispatching service messages")
     res.send('OK')
-    const theData = req.body;
-    console.log("Now dispatching service messages")
-	console.log(theData)
+    const data = req.body
+    console.log("GET")
+	// console.log(data)
 	dispatch()
 })
 
-app.post("/dispatch", (req, res) => {	
-	// res.json("Now dispatching service messages")
+app.post("/dispatch", (req, res) => {		
     res.send('OK')
-    const theData = req.body;
-	console.log("Now dispatching service messages")
-	console.log(theData)
+    const data = req.body
+	console.log("POST")
+	// console.log(data)
 	dispatch()
 })
 
 app.listen(port, () => {
-    console.log("Server running on port: ", port)
     console.log(`Server running on port: ${port}. Started ${new Date().toString()}`)
 })
-
-
-
-
-/* var http = require('http')
-
-http.createServer(function (req, res) {
-	res.writeHead(200, { 'Content-Type': 'text/plain' })
-	res.end('Hello World\n')
-}).listen(8080, 'localhost')
-console.log('Server running at http://localhost:8080/')
-
- */
