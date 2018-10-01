@@ -23,10 +23,11 @@ app.get("/dispatch", (req, res, next) => {
 	dispatch()
 })
 
-// GET route for API call (slashed next arg) http://services.senti.cloud/api/1
+// GET route for options API call (slashed next arg) http://services.senti.cloud/api/1?options
 app.get('/api/:version/options', (req, res) => {
 	res.send(req.params.version)
-	console.log("GET /api/:version ")
+	res.send('Options')
+	console.log("GET /api/:version/options ")
 })
 
 // POST is intended for the GitHub webhook
