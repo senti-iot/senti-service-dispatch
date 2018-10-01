@@ -13,11 +13,22 @@ app.use(bodyParser.urlencoded({
     extended: true,
 }))
 
+// GET route to force dispatch through browser
 app.get("/dispatch", (req, res, next) => {	
     res.send('OK')
     const data = req.body
     console.log("GET")
 	// console.log(data)
+	dispatch()
+})
+
+// GET route for API call (slashed next arg) https://services.senti.cloud/api/1
+app.get('/api/:version', (req, res) => {
+	// res.send('OK')
+	res.send(reg.params.version)
+	const data = req.body
+	console.log("GET /api/:version ")
+	console.log(data)
 	dispatch()
 })
 
