@@ -26,10 +26,9 @@ app.get("/dispatch", (req, res, next) => {
 app.get('/api/:version', (req, res) => {
 	// res.send('OK')
 	res.send(req.params.version)
-	const data = req.body
+	// const data = req.body
 	console.log("GET /api/:version ")
-	console.log(data)
-	dispatch()
+	// console.log(data)
 })
 
 // POST is intended for the GitHub webhook
