@@ -23,10 +23,20 @@ app.get("/dispatch", (req, res, next) => {
 	dispatch()
 })
 
-// GET route for options API call (slashed next arg) http://services.senti.cloud/api/1?options
+// GET route for API version (slashed next arg) http://services.senti.cloud/api/1
+app.get('/api/:version', (req, res) => {
+	res.send(req.params.version)	
+	console.log("GET /api/:version ")
+})
+
+// GET route for options http://services.senti.cloud/api/1/options
 app.get('/api/:version/options', (req, res) => {
-	res.send(req.params.version)
-	res.send('Options')
+	res.send(`{
+  		"name": "senti-mqtt-client",
+		"version": "1.0.0",
+		"description": "Senti.Cloud MQTT client for Senti-in-a-Box devices",
+		"main": "index.js"
+	}`)
 	console.log("GET /api/:version/options ")
 })
 
