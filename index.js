@@ -21,6 +21,7 @@ app.get("/dispatch", (req, res, next) => {
 	dispatch()
 })
 
+// POST is intended for the GitHub webhook
 app.post("/dispatch", (req, res) => {		
     res.send('OK')
     const data = req.body
