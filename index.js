@@ -22,10 +22,10 @@ app.get("/dispatch", (req, res, next) => {
 	dispatch()
 })
 
-// GET route for API call (slashed next arg) https://services.senti.cloud/api/1
+// GET route for API call (slashed next arg) http://services.senti.cloud/api/1
 app.get('/api/:version', (req, res) => {
 	// res.send('OK')
-	res.send(reg.params.version)
+	res.send(req.params.version)
 	const data = req.body
 	console.log("GET /api/:version ")
 	console.log(data)
