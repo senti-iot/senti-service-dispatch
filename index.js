@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 
 const options = require('./options').options
 
+const apiVersion = '1'
+
 var port = process.env.PORT || 3000
 
 var app = express()
@@ -27,7 +29,15 @@ app.get("/dispatch", (req, res, next) => {
 	dispatch()
 })
 
-// GET route for API version (slashed next arg) http://services.senti.cloud/api/1
+// GET route to return current API version
+// GET route for API version - http://services.senti.cloud/api
+app.get('/api', (req, res) => {
+	res.json(apiVersion)
+	console.log("GET /api")
+})
+
+
+// GET route for API version - http://services.senti.cloud/api/1
 app.get('/api/:version', (req, res) => {
 	res.send(req.params.version)	
 	console.log("GET /api/:version ")
@@ -47,13 +57,13 @@ app.get('/api/:version/options', (req, res) => {
 			res.json(options)
 			break
 		case '2':
-			res.json(`Version ${req.params.version} not supported`) 
+			res.send(`Version ${req.params.version} not supported`) 
 			break
 		case '3':
-			res.json(`Version ${req.params.version} not supported`)
+			res.send(`Version ${req.params.version} not supported`)
 			break
 		default:
-			res.json(`Version ${req.params.version} not supported`) 
+			res.send(`Version ${req.params.version} not supported`) 
 			break
 	}
 
