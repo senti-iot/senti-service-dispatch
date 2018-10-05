@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ // support encoded bodies
     extended: true,
 }))
 
-app.set('json spaces')
+app.set('json')
 
 // Routes will go here
 
