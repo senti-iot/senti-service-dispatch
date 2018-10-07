@@ -13,12 +13,10 @@ client.on("error", function (error) {
 })
 
 
-function dispatch() {
+const dispatch = () => {
 	client.publish('sensor/update', 'now')
 	console.log('Dispatching from ', clientId)
 }
 
 
-module.exports = {
-	dispatch: dispatch
-}
+module.exports = dispatch

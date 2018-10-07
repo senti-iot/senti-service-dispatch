@@ -1,10 +1,12 @@
 #!/usr/bin/env nodejs
-const dispatch = require("./dispatch").dispatch
+const dispatch = require("./dispatch")
+const execCmd = require('./execcmd')
+const execFile = require('child_process').execFile
 
 var express = require("express")
 const bodyParser = require('body-parser')
 
-const options = require('./options').options
+const options = require('./options')
 
 const apiVersion = '1'
 
@@ -74,8 +76,33 @@ app.get('/api/:version/options', (req, res) => {
 app.post("/dispatch", (req, res) => {		
     res.send('OK')
     const data = req.body
-	console.log("POST")
+	console.log("POST dispatch")
 	dispatch()
+})
+
+// GET is intended for web executing commands on the client and returning result in res
+// http://localhost:3000/exec?cmd=node&args=-v
+app.get("/exec", (req, res) => {
+	let cmd = req.query.cmd
+  	let args = req.query.args
+	console.log("EXECUTE " + cmd + ' ' + args)
+	// let response = execCmd(cmd, args)	
+	var child = execFile(cmd, [args], (error, stdout, stderr) => {
+		if (error) {
+			console.error('stderr', stderr)
+			throw error
+		}
+		let response = (stdout)
+		res.send(response)
+	})
+	
+})
+
+app.post("/exec", (req, res) => {
+	var cmd = req.body.cmd
+	var args = req.body.args
+	console.log("POST cmd " + cmd + ' ' + args)
+	res.send("POST cmd " + cmd + ' ' + args)
 })
 
 // Start the server
