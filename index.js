@@ -98,6 +98,12 @@ app.get("/exec", (req, res) => {
 	
 })
 
+// http://localhost:3000/readme
+app.get("/readme", (req, res) => {
+	res.sendFile('./README.md', { root: __dirname })
+})
+
+
 app.post("/exec", (req, res) => {
 	var cmd = req.body.cmd
 	var args = req.body.args

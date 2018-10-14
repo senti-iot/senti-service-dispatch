@@ -4,7 +4,6 @@ module.exports = {
 	apps: [{
 		name: 'senti-service-dispatch',
 		script: 'index.js',
-		// cwd: '/Users/cbroberg/Apps/senti-service-dispatch',
 		args: 'one two',
 		instances: 1,
 		// instances: 'max',
@@ -15,4 +14,3 @@ module.exports = {
 		max_memory_restart: '1G',
 	}],
 }
-
