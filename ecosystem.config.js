@@ -1,21 +1,18 @@
+// Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
+
 module.exports = {
 	apps: [{
 		name: 'senti-service-dispatch',
 		script: 'index.js',
-
-		// Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
+		// cwd: '/Users/cbroberg/Apps/senti-service-dispatch',
 		args: 'one two',
-		instances: 'max',
+		instances: 1,
+		// instances: 'max',
+		exec_mode: 'fork',
 		autorestart: true,
 		watch: true,
 		ignore_watch: 'logs/*',
 		max_memory_restart: '1G',
-		env: {
-			NODE_ENV: 'development'
-		},
-		env_production: {
-			NODE_ENV: 'production'
-		}
 	}],
 }
 
