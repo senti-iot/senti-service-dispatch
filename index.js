@@ -1,11 +1,10 @@
 #!/usr/bin/env nodejs
+var express = require("express")
+var helmet = require('helmet')
 const dispatch = require("./dispatch")
 const execCmd = require('./execcmd')
 const execFile = require('child_process').execFile
-
-var express = require("express")
 const bodyParser = require('body-parser')
-
 const options = require('./options')
 
 const apiVersion = '1'
@@ -13,6 +12,8 @@ const apiVersion = '1'
 var port = process.env.PORT || 3000
 
 var app = express()
+
+app.use(helmet())
 
 app.use(bodyParser.json()) // support json encoded bodies
 app.use(bodyParser.urlencoded({ // support encoded bodies
