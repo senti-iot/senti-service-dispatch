@@ -34,20 +34,20 @@ app.get("/dispatch", (req, res, next) => {
 })
 
 // GET route to return current API version
-// GET route for API version - http://services.senti.cloud/api
+// GET route for API version - https://services.senti.cloud/api
 app.get('/api', (req, res) => {
 	res.json(apiVersion)
 	console.log("GET /api")
 })
 
 
-// GET route for API version - http://services.senti.cloud/api/1
+// GET route for API version - https://services.senti.cloud/api/1
 app.get('/api/:version', (req, res) => {
 	res.send(req.params.version)	
 	console.log("GET /api/:version ")
 })
 
-// GET route for options http://services.senti.cloud/api/1/options
+// GET route for options https://services.senti.cloud/api/1/options
 app.get('/api/:version/options', (req, res) => {
 	// res.setHeader('Content-Type', 'application/json')
 	// res.send(JSON.stringify(options, null, 3))
