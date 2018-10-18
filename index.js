@@ -6,7 +6,8 @@ const execCmd = require('./execcmd')
 const execFile = require('child_process').execFile
 const bodyParser = require('body-parser')
 
-const options = require('./options')
+const options = require('./options').options
+const mqttOptions = require('./options').mqttOptions
 
 const apiVersion = '1'
 
@@ -18,7 +19,7 @@ app.use(helmet())
 
 app.use(bodyParser.json()) // support json encoded bodies
 app.use(bodyParser.urlencoded({ // support encoded bodies
-    extended: true,
+    extended: true
 }))
 
 app.set('json')
@@ -72,6 +73,29 @@ app.get('/api/:version/options', (req, res) => {
 	}
 
 	console.log(`GET /api/${req.params.version}/options`)
+})
+
+// GET route for MQTT options https://services.senti.cloud/api/1/mqttoptions
+app.get('/api/:version/mqttoptions', (req, res) => {
+	switch (req.params.version) {
+		case 'v1':
+		case '1':
+		case 'version1':
+		case '1.0':
+			res.json(mqttOptions)
+			break
+		case '2':
+			res.send(`Version ${req.params.version} not supported`) 
+			break
+		case '3':
+			res.send(`Version ${req.params.version} not supported`)
+			break
+		default:
+			res.send(`Version ${req.params.version} not supported`) 
+			break
+	}
+
+	console.log(`GET /api/${req.params.version}/mqttoptions`)
 })
 
 // POST is intended for the GitHub webhook

@@ -1,12 +1,28 @@
-var os = require("os")
+var os = require('os')
 var hostname = os.hostname()
+
+const mqttOptions = {
+	host: 'mqtt://hive.senti.cloud',
+	port: '1883',
+	username: '',
+	password: '',
+	keepalive: 60,
+	clientId: hostname,
+	clean: true,
+	will: {
+		topic: 'sensor/status',
+		payload: 'offline',
+		qos: 1,
+		retain: false
+	}	
+}
 
 const options = {
 	host: 'mqtt://hive.senti.cloud',
 	port: '1883',
 	username: '',
 	password: '',
-	keepalive: 5,
+	keepalive: 60,
 	clientId: hostname,
 	clean: true,
 	will: {
@@ -19,4 +35,4 @@ const options = {
 	logLocale: 'da'
 }
 
-module.exports = options
+module.exports = { options, mqttOptions }

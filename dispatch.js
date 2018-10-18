@@ -5,10 +5,10 @@ var clientId = 'senti-service-dispatch'
 
 var client = mqtt.connect('mqtt://hive.senti.cloud')
 
-client.on('connect', function () {
+client.on('connect', () => {
 })
 
-client.on("error", function (error) {
+client.on("error", (error) => {
 	console.log("ERROR: ", error)
 })
 
