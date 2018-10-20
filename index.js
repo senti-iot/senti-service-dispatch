@@ -96,7 +96,7 @@ app.get('/api/:version/mqttoptions', (req, res) => {
 	}
 
 	console.log(`GET /api/${req.params.version}/mqttoptions`)
-	console.log('Headers: ', req.headers)
+	console.log('Client caller id: ', req.headers.clientid)
 	
 })
 
