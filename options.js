@@ -13,6 +13,12 @@ const mqttOptions = {
 		watchman: 'senti/services/watchman/',
 		client: 'senti/sensor/'
 	},
+	topic_comms: {
+		cmd: 'cmd',
+		data: 'data',
+		status: 'status',
+		temperature: 'temperature'
+	},
 	will: {
 		topic: 'optain locally',
 		payload: JSON.stringify({ status: 'offline (dead)' }),
