@@ -16,7 +16,8 @@ const mqttOptions = {
 		cmd: 'cmd',
 		data: 'data',
 		status: 'status',
-		temperature: 'temperature'
+		temperature: 'temperature',
+		watch: 'watch'
 	},
 	will: {
 		topic: 'optain locally',
