@@ -1,5 +1,4 @@
-var os = require('os')
-var hostname = os.hostname()
+// Options for MQTT connections and general options
 
 const mqttOptions = {
 	host: 'mqtt://hive.senti.cloud',
@@ -24,12 +23,21 @@ const mqttOptions = {
 		payload: JSON.stringify({ status: 'offline (dead)' }),
 		qos: 1,
 		retain: true
-	}	
+	},
+	mqtt_auth: ''
 }
 
 const options = {
+	watch_changes: true,
+	phone_home: true,
+	ping: true,
+	logLocale: 'da',
 	slackChannel: 'https://hooks.slack.com/services/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',
-	logLocale: 'da'
+	versions: {
+		watchman_version: '',
+		api_version: '',
+		client_version: ''
+	}
 }
 
 module.exports = { options, mqttOptions }
