@@ -7,14 +7,14 @@ const mqttOptions = {
 	username: '',
 	password: '',
 	keepalive: 60,
-	// clientId: (optain locally),
+	clientId: 'optain locally',
 	clean: false, // false for persistent sessions
 	topic_roots: {
 		watchman: 'senti/services/watchman/',
 		client: 'senti/sensor/'
 	},
 	will: {
-		topic: _topic + '/status',
+		topic: 'optain locally',
 		payload: JSON.stringify({ status: 'offline (dead)' }),
 		qos: 1,
 		retain: true
