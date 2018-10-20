@@ -48,56 +48,71 @@ app.get('/api/:version', (req, res) => {
 	console.log("GET /api/:version ")
 })
 
-// GET route for options https://services.senti.cloud/api/1/options
-app.get('/api/:version/options', (req, res) => {
-	// res.setHeader('Content-Type', 'application/json')
-	// res.send(JSON.stringify(options, null, 3))
-	// res.json(options)
-	
-	switch (req.params.version) {
+const verifyAPIVersionAndSend = (version, payload) => {
+	switch (version) {
 		case 'v1':
 		case '1':
 		case 'version1':
 		case '1.0':
-			res.json(options)
+			res.json(payload)
+			console.log(`GET /api/${req.params.version}/${payload}`)
+			console.log('Caller id: ', req.headers.clientid)
 			break
 		case '2':
-			res.send(`Version ${req.params.version} not supported`) 
+			res.send(`Version ${version} not supported`)
 			break
 		case '3':
-			res.send(`Version ${req.params.version} not supported`)
+			res.send(`Version ${version} not supported`)
 			break
 		default:
-			res.send(`Version ${req.params.version} not supported`) 
+			res.send(`Version ${version} not supported`)
 			break
 	}
 
-	console.log(`GET /api/${req.params.version}/options`)
+}
+
+// GET route for options https://services.senti.cloud/api/1/options
+app.get('/api/:version/options', (req, res) => {
+	verifyAPIVersionAndSend(req.params.version, options)
+	// switch (req.params.version) {
+	// 	case 'v1':
+	// 	case '1':
+	// 	case 'version1':
+	// 	case '1.0':
+	// 		res.json(options)
+	// 		break
+	// 	case '2':
+	// 		res.send(`Version ${req.params.version} not supported`) 
+	// 		break
+	// 	case '3':
+	// 		res.send(`Version ${req.params.version} not supported`)
+	// 		break
+	// 	default:
+	// 		res.send(`Version ${req.params.version} not supported`) 
+	// 		break
+	// }
 })
 
 // GET route for MQTT options https://services.senti.cloud/api/1/mqttoptions
 app.get('/api/:version/mqttoptions', (req, res) => {
-	switch (req.params.version) {
-		case 'v1':
-		case '1':
-		case 'version1':
-		case '1.0':
-			res.json(mqttOptions)
-			break
-		case '2':
-			res.send(`Version ${req.params.version} not supported`) 
-			break
-		case '3':
-			res.send(`Version ${req.params.version} not supported`)
-			break
-		default:
-			res.send(`Version ${req.params.version} not supported`) 
-			break
-	}
-
-	console.log(`GET /api/${req.params.version}/mqttoptions`)
-	console.log('Client caller id: ', req.headers.clientid)
-	
+	verifyAPIVersionAndSend(req.params.version, mqttOptions)
+	// switch (req.params.version) {
+	// 	case 'v1':
+	// 	case '1':
+	// 	case 'version1':
+	// 	case '1.0':
+	// 		res.json(mqttOptions)
+	// 		break
+	// 	case '2':
+	// 		res.send(`Version ${req.params.version} not supported`) 
+	// 		break
+	// 	case '3':
+	// 		res.send(`Version ${req.params.version} not supported`)
+	// 		break
+	// 	default:
+	// 		res.send(`Version ${req.params.version} not supported`) 
+	// 		break
+	// }	
 })
 
 // POST is intended for the GitHub webhook
