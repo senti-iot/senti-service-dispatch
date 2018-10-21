@@ -32,7 +32,7 @@ const options = {
 	watch_changes: true,
 	phone_home: true,
 	ping: true,
-	ping_interval: '5000',
+	ping_interval: 5000,
 	logLocale: 'da',
 	slackChannel: 'https://hooks.slack.com/services/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',
 	versions: {
