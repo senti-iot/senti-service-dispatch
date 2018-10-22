@@ -6,7 +6,7 @@ const mqttOptions = {
 	username: '',
 	password: '',
 	keepalive: 60,
-	clientId: 'optain locally',
+	clientId: undefined,
 	clean: false, // false for persistent sessions
 	topic_roots: {
 		watchman: 'senti/services/watchman/',
@@ -20,12 +20,12 @@ const mqttOptions = {
 		watch: 'watch'
 	},
 	will: {
-		topic: 'optain locally',
+		topic: undefined,
 		payload: JSON.stringify({ status: 'offline (dead)' }),
 		qos: 1,
 		retain: true
 	},
-	mqtt_auth: ''
+	mqtt_auth: undefined
 }
 
 const options = {
@@ -35,6 +35,8 @@ const options = {
 	ping_interval: 5000,
 	logLocale: 'da',
 	slackChannel: 'https://hooks.slack.com/services/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',
+	slackBaseURL: 'https://hooks.slack.com/services/',
+	slackToken: 'T1GKW3Y83/BD4HVLDA8/IAP9iIxvy5tpO7Sv8AjZGVkx',
 	versions: {
 		watchman_version: '',
 		api_version: '1',
