@@ -14,9 +14,8 @@ client.on("error", (error) => {
 
 
 const dispatch = () => {
-	client.publish('sensor/update', 'now')
-	console.log('Dispatching from ', clientId)
+	client.publish('senti/services/mqttclient/update', 'now')
+	console.log('Dispatching MQTT Client update from ', clientId)
 }
-
 
 module.exports = dispatch
