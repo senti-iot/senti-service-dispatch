@@ -1,11 +1,11 @@
-// Options for MQTT connections and general options
+// Configurations and options for Senti services
 
 const mqtt = {
 	host: 'mqtt://hive.senti.cloud',
 	port: '1883',
 	username: '',
 	password: '',
-	mqtt_auth: undefined,
+	mqttAuth: undefined,
 	clientId: undefined,
 	keepalive: 60,
 	clean: false, // false for persistent sessions
@@ -30,32 +30,32 @@ const mqtt = {
 	},
 }
 
-const options = {
+const ext = {
 	logLocale: 'da',
 	versions: {
-		watchman_version: '',
-		api_version: '1',
-		client_version: ''
+		watchmanVersion: '',
+		clientVersion: '',
+		apiVersion: '1'
 	}
 }
 
 const server = {
-	server_title: 'Senti Watchman',
+	serverTitle: 'Senti Watchman',
 	port: 3001
 }
 
 const watch = {
-	watch_changes: true,
-	phone_home: true
+	watchChanges: true,
+	phoneHome: true
 }
 
 const services = {
 	mqtt: mqtt,
-	options: options,
+	ext: ext,
 	watchman: 'senti-watchman.service',
 	client: 'senti-mqtt-client.service',
 	ping: true,
-	ping_interval: 5000,
+	pingInterval: 5000,
 	slack: {
 		channel: 'https://hooks.slack.com/services/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',
 		baseURL: 'https://hooks.slack.com/services/',
@@ -69,4 +69,4 @@ var config = {
 	services: services
 }
 
-module.exports = { options, mqtt, config }
+module.exports = config

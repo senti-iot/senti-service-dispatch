@@ -2,12 +2,10 @@
 var express = require("express")
 var helmet = require('helmet')
 const dispatch = require("./dispatch")
-const execCmd = require('./execcmd')
+// const execCmd = require('./execcmd')
 const execFile = require('child_process').execFile
 const bodyParser = require('body-parser')
-
-const options = require('./options').options
-const mqttOptions = require('./options').mqttOptions
+const config = require('./config')
 
 const apiVersion = '1'
 
@@ -17,16 +15,14 @@ var app = express()
 
 app.use(helmet())
 
-app.use(bodyParser.json()) // support json encoded bodies
-app.use(bodyParser.urlencoded({ // support encoded bodies
-    extended: true
-}))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('json')
 
-// Routes will go here
+// --------------- ROUTES ---------------
 
-// GET route to force mqtt-client service
+// GET route to force senti-mqtt-client service to update
 app.get("/dispatch", (req, res, next) => {	
     res.send('OK')
     const data = req.body
@@ -34,15 +30,11 @@ app.get("/dispatch", (req, res, next) => {
 	dispatch()
 })
 
-// GET route for force update watchman service
-
-// GET route to return current API version
-// GET route for API version - https://services.senti.cloud/api
+// GET route for current API version - https://services.senti.cloud/api
 app.get('/api', (req, res) => {
 	res.json(apiVersion)
 	console.log("GET /api")
 })
-
 
 // GET route for API version - https://services.senti.cloud/api/1
 app.get('/api/:version', (req, res) => {
@@ -50,75 +42,27 @@ app.get('/api/:version', (req, res) => {
 	console.log("GET /api/:version ")
 })
 
-const verifyAPIVersionAndSend = (version, payload) => {
-	switch (version) {
-		case 'v1':
-		case '1':
-		case 'version1':
-		case '1.0':
-			res.json(payload)
-			console.log(`GET /api/${req.params.version}/${payload}`)
-			console.log('Caller id: ', req.headers.clientid)
-			break
-		case '2':
-			res.send(`Version ${version} not supported`)
-			break
-		case '3':
-			res.send(`Version ${version} not supported`)
-			break
-		default:
-			res.send(`Version ${version} not supported`)
-			break
-	}
-
-}
-
-// GET route for options https://services.senti.cloud/api/1/options
-app.get('/api/:version/options', (req, res) => {
-	// verifyAPIVersionAndSend(req.params.version, options)
+// GET route for config https://services.senti.cloud/api/1/config
+app.get('/api/:version/config', (req, res) => {
 	switch (req.params.version) {
 		case 'v1':
 		case '1':
 		case 'version1':
 		case '1.0':
-			res.json(options)
+			res.json(config)
 			console.log(`GET /api/${req.params.version}/options`)
-			console.log('Caller id: ', req.headers.clientid)
+			console.log('Service: ', req.headers.service)
 			break
 		case '2':
-			res.send(`Version ${req.params.version} not supported`) 
+			res.send(`Version ${req.params.version} not supported`)
 			break
 		case '3':
 			res.send(`Version ${req.params.version} not supported`)
 			break
 		default:
-			res.send(`Version ${req.params.version} not supported`) 
+			res.send(`Version ${req.params.version} not supported`)
 			break
 	}
-})
-
-// GET route for MQTT options https://services.senti.cloud/api/1/mqttoptions
-app.get('/api/:version/mqttoptions', (req, res) => {
-	// verifyAPIVersionAndSend(req.params.version, mqttOptions)
-	switch (req.params.version) {
-		case 'v1':
-		case '1':
-		case 'version1':
-		case '1.0':
-			res.json(mqttOptions)
-			console.log(`GET /api/${req.params.version}/mqttoptions`)
-			console.log('Caller id: ', req.headers.clientid)
-			break
-		case '2':
-			res.send(`Version ${req.params.version} not supported`) 
-			break
-		case '3':
-			res.send(`Version ${req.params.version} not supported`)
-			break
-		default:
-			res.send(`Version ${req.params.version} not supported`) 
-			break
-	}	
 })
 
 // POST is intended for the GitHub webhook
@@ -151,7 +95,6 @@ app.get("/exec", (req, res) => {
 app.get("/readme", (req, res) => {
 	res.sendFile('./README.md', { root: __dirname })
 })
-
 
 app.post("/exec", (req, res) => {
 	var cmd = req.body.cmd

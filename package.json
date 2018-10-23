@@ -1,7 +1,7 @@
 {
   "name": "senti-service-dispatch",
-  "version": "0.0.7",
-  "description": "Simple REST API for dispatching service MQTT mesages to devices",
+  "version": "0.0.8",
+  "description": "Simple REST API for dispatching service MQTT mesages to devices and configuration",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
