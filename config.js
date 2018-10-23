@@ -30,7 +30,7 @@ var config = {
 	},
 	server: {
 		serverTitle: 'Senti Watchman',
-		port: 3001
+		port: 3002
 	},
 	services: {
 		watchman: 'senti-watchman.service',
