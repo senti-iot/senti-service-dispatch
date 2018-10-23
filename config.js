@@ -59,4 +59,4 @@ var config = {
 
 module.exports = config
 
-console.dir(config, { depth: null })
+// console.dir(config, { depth: null })
