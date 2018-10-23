@@ -7,7 +7,7 @@ const execFile = require('child_process').execFile
 const bodyParser = require('body-parser')
 const config = require('./config')
 
-const apiVersion = '1'
+const apiVersion = config.versions.apiVersion || '1'
 
 var port = process.env.PORT || 3000
 
