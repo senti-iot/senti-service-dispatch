@@ -30,13 +30,13 @@ var config = {
 	},
 	server: {
 		serverTitle: 'Senti Watchman',
-		port: 3002
+		port: 3001
 	},
 	services: {
 		watchman: 'senti-watchman.service',
 		client: 'senti-mqtt-client.service',
 		ping: true,
-		pingInterval: 5000
+		pingInterval: 3000
 	},
 	watch: {
 		watchChanges: true,
