@@ -14,6 +14,7 @@ client.on("error", (error) => {
 
 
 const dispatch = () => {
+	// Updates all clients running senti-mqtt-client service
 	client.publish('senti/services/mqttclient/update', 'now')
 	console.log('Dispatching MQTT Client update from ', clientId)
 }

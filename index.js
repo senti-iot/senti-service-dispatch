@@ -26,13 +26,15 @@ app.set('json')
 
 // Routes will go here
 
-// GET route to force dispatch through browser
+// GET route to force mqtt-client service
 app.get("/dispatch", (req, res, next) => {	
     res.send('OK')
     const data = req.body
     console.log("GET")
 	dispatch()
 })
+
+// GET route for force update watchman service
 
 // GET route to return current API version
 // GET route for API version - https://services.senti.cloud/api
@@ -123,7 +125,7 @@ app.get('/api/:version/mqttoptions', (req, res) => {
 app.post("/dispatch", (req, res) => {		
     res.send('OK')
     const data = req.body
-	console.log("POST dispatch")
+	console.log("POST dispatch from GitHub push")
 	dispatch()
 })
 

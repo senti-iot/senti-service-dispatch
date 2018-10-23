@@ -44,4 +44,27 @@ const options = {
 	}
 }
 
-module.exports = { options, mqttOptions }
+const server = {
+	server_title: 'Senti Watchman',
+	port: 3001
+}
+
+const watch = {
+	watch_changes: true,
+	phone_home: true
+}
+
+const services = {
+	mqttOptions: mqttOptions,
+	options: options,
+	watchman_service: 'senti-watchman.service',
+	client_service: 'senti-mqtt-client.service'
+}
+
+var config = {
+	server: server,
+	watch: watch,
+	services: services
+}
+
+module.exports = { options, mqttOptions, config }
