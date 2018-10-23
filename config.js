@@ -26,8 +26,8 @@ const mqtt = {
 			status: 'status',
 			temperature: 'temperature',
 			watch: 'watch'
-		},
-	},
+		}
+	}
 }
 
 const ext = {
@@ -70,3 +70,5 @@ var config = {
 }
 
 module.exports = config
+
+console.log(config)
