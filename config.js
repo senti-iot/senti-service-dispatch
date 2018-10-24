@@ -11,7 +11,13 @@ var config = {
 		keepalive: 60,
 		clean: false // false for persistent sessions
 	},
-	mqttWill: {
+	mqttWillWatchman: {
+		topic: undefined,
+		payload: JSON.stringify({ status: 'offline (dead)' }),
+		qos: 1,
+		retain: true
+	},
+	mqttWillClient: {
 		topic: undefined,
 		payload: JSON.stringify({ status: 'offline (dead)' }),
 		qos: 1,
