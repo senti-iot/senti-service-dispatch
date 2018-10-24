@@ -24,8 +24,9 @@ var config = {
 		retain: true
 	},
 	mqttRootTopics: {
-		watchman: 'senti/services/watchman/',
-		client: 'senti/sensor/'
+		watchman: 'senti/services/watchman',
+		client: 'senti/sensor',
+		api: 'senti/services/api'
 	},
 	mqttPubSubTopics: {
 		cmd: 'cmd',
