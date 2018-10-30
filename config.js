@@ -31,8 +31,8 @@ var config = {
 	mqttPubSubTopics: {
 		cmd: 'cmd',
 		data: 'data',
-		status: 'status',
-		temperature: 'temperature',
+		status: 'state',
+		update: 'update',
 		watch: 'watch'
 	},
 	server: {
