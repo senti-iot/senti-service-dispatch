@@ -57,7 +57,8 @@ var config = {
 	versions: {
 		watchmanVersion: '', // add getVersion
 		clientVersion: '', // add getVersion
-		apiVersion: '1'
+		apiVersion: '1',
+		autoupdate: true
 	},
 	aux: {
 		logLocale: 'da'
