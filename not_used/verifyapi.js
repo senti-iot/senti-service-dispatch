@@ -20,3 +20,15 @@ const verifyAPIVersionAndSend = (version, payload) => {
 	}
 }
 
+const verifyAPIVersion = (version) => {	
+	switch (version) {
+		case 'v1':
+		case '1':
+		case 'version1':
+		case '1.0':
+			return true
+		default:
+			console.log(`API version ${version} not supported`)
+			return false
+	}
+}
