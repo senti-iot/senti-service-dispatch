@@ -1,6 +1,6 @@
 {
   "name": "senti-service-dispatch",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Simple REST API for dispatching service MQTT mesages to devices and configuration",
   "main": "index.js",
   "scripts": {
