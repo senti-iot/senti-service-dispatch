@@ -1,6 +1,6 @@
 {
   "name": "senti-service-dispatch",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Simple REST API for dispatching service MQTT mesages to devices and configuration",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,11 @@
     "api",
     "nodejs"
   ],
-  "author": "Christian Broberg",
+  "author": {
+	"name": "Christian Broberg",
+	"email": "apisupport@senti.cloud",
+	"url": "https://senti.cloud/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/senti-platform/senti-service-dispatch/issues"
